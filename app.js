@@ -1,27 +1,45 @@
-
-const gameBoard = document.querySelector(".board");
+const playBoard = document.querySelector(".board");
 
 let foodX, foodY;
-let snakeX = 10, snakeY = 5;
+let snakeX = 5, snakeY = 10;
+let snakeBody = []
 let velocityX = 0, velocityY = 0; 
 
-// Trying to pass a random number from 0 - 30 for food positioning
-const foodPosition = () => {
+const changeFoodPosition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
 }
 
-// Changing velocity value based on key press
-
-
-// Setting the value for the grid items, creating a food div and inserting the playboard element
-const initGame = () => {
-    let htmlMarkup = `<div class ="food" style ="grid-area: ${foodY} / ${foodX}"</div>`;
-
-    
-    htmlMarkup += `<div class ="head" style ="grid-area: ${snakeY} / ${snakeX}"</div>`;
-    gameBoard.innerHTML = htmlMarkup;
+const changeDirection = (e) => {
+    if(e.key === "ArrowUp"){
+        velocityX = 0;
+        velocityY = -1;
+    } else if(e.key === "ArrowDown"){
+        velocityX = 0;
+        velocityY = 1;
+    } else if(e.key === "ArrowLeft"){
+        velocityX = -1;
+        velocityY = 0;
+    } else if(e.key === "ArrowRight"){
+        velocityX = 1;
+        velocityY = 0;
+    }
+    initGame();
 }
-foodPosition();
+
+const initGame = () => {
+    let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
+
+    if(snakeX === foodX && snakeY === foodY){
+        changeFoodPosition();
+
+    }
+
+    snakeX += velocityX;
+    snakeY += velocityY;
+    htmlMarkup += `<div class="food" style="grid-area: ${snakeY} / ${snakeX}"></div>`;
+    playBoard.innerHTML = htmlMarkup;
+}
+changeFoodPosition()
 initGame();
 document.addEventListener("keydown", changeDirection);
