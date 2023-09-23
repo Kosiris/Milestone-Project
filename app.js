@@ -5,13 +5,13 @@ let snakeX = 10, snakeY = 14;
 let snakeBody = [];
 let velocityX = 0, velocityY = 0; 
 
-//Randomizing the food position using Math.floor
+//Randomizing the food position using Math.floor 
 const changeFoodPosition = () => {
     foodX = Math.floor(Math.random() * 30) + 1;
     foodY = Math.floor(Math.random() * 30) + 1;
 }
 //Changing position based on velocity from key presses.
-const changeDirection = (e) => {
+const moveSnake = (e) => {
     if(e.key === "ArrowUp"){
         velocityX = 0;
         velocityY = -1;
@@ -28,6 +28,7 @@ const changeDirection = (e) => {
     initGame();
 }
 // food positioning and allowing the food position to be pushed to snake body
+
 const initGame = () => {
     let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 
@@ -43,4 +44,4 @@ const initGame = () => {
 }
 changeFoodPosition()
 initGame();
-document.addEventListener("keydown", changeDirection);
+document.addEventListener("keydown", moveSnake);
