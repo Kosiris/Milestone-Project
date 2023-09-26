@@ -1,6 +1,6 @@
 const playBoard = document.querySelector(".board");
 const scoreCount = document.querySelector(".score")
-
+// Stuff we need to get the game functioning , food spawn, snake spawn, and setting velocity for our keydown movements
 let foodX, foodY;
 let snakeX = 15, snakeY = 15;
 let snakeBody = [];
@@ -29,7 +29,7 @@ const moveSnake = (e) => {
     }
     initalizeGame();
 }
-// food positioning and allowing the food position to be pushed to snake body
+
 
 const initalizeGame = () => {
     let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
@@ -38,16 +38,16 @@ const initalizeGame = () => {
         changeFoodPosition();
         snakeBody.push([foodX, foodY]); 
         score++;
-
+// Game scoring function and having it insert into the HTML everytime a food is eaten
         scoreCount.innerText = `Score: ${score}`;
     }
 
     for (let i = snakeBody.length - 1; i > 0; i--) {
         snakeBody[i] = snakeBody[i - 1];
     }
-
+// Adding this so that the snakehead appears after current changes
     snakeBody[0] = [snakeX, snakeY]
-
+// Snake movement
     snakeX += velocityX;
     snakeY += velocityY;
 
@@ -59,7 +59,8 @@ const initalizeGame = () => {
     playBoard.innerHTML = htmlMarkup;
 }
 
-// Now i need to figure out how to add a scoreboard and a gameover.
+// Figured out scoreboard, got rid of highscore since it'll be hard.
+// Game over condition? 10 score?
 changeFoodPosition()
 initalizeGame();
 document.addEventListener("keydown", moveSnake);
