@@ -35,11 +35,19 @@ const initalizeGame = () => {
     if(snakeX === foodX && snakeY === foodY){
         changeFoodPosition();
         snakeBody.push([foodX, foodY]); 
+        console.log(snakeBody);
     }
+
+    
 
     snakeX += velocityX;
     snakeY += velocityY;
-    htmlMarkup += `<div class="head" style="grid-area: ${snakeY} / ${snakeX}"></div>`;
+
+    for (let i = 0; i < snakeBody.length; i++) {
+        // divs are being added for each snake part
+        htmlMarkup += `<div class="head" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
+    }
+    
     playBoard.innerHTML = htmlMarkup;
 }
 changeFoodPosition()
