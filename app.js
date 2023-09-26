@@ -49,11 +49,13 @@ const initalizeGame = () => {
 
     for (let i = 0; i < snakeBody.length; i++) {
         // divs are being added for each snake part
-        htmlMarkup += `<div class="head" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
+        htmlMarkup += `<div class="snake" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
     }
     
     playBoard.innerHTML = htmlMarkup;
 }
+
+// Now i need to figure out how to add a scoreboard and a gameover.
 changeFoodPosition()
 initalizeGame();
 document.addEventListener("keydown", moveSnake);
