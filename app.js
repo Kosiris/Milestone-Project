@@ -1,9 +1,11 @@
 const playBoard = document.querySelector(".board");
+const scoreCount = document.querySelector(".score")
 
 let foodX, foodY;
-let snakeX = 10, snakeY = 14;
+let snakeX = 15, snakeY = 15;
 let snakeBody = [];
-let velocityX = 0, velocityY = 0; 
+let velocityX = 0, velocityY = 0;
+let score = 0; 
 
 //Randomizing the food position using Math.floor from 0 - 30 since there are 30 tiles in each row/column
 const changeFoodPosition = () => {
@@ -35,7 +37,9 @@ const initalizeGame = () => {
     if(snakeX === foodX && snakeY === foodY){
         changeFoodPosition();
         snakeBody.push([foodX, foodY]); 
-        console.log(snakeBody);
+        score++;
+
+        scoreCount.innerText = `Score: ${score}`;
     }
 
     for (let i = snakeBody.length - 1; i > 0; i--) {
