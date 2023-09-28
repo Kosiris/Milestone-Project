@@ -10,3 +10,5 @@ When trying to add an alert for the game to win, my code breaks and its close to
 
 
 
+Color palette: https://www.color-hex.com/color-palette/55334
+Font: https://fonts.google.com/specimen/Mooli
