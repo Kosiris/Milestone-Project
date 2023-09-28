@@ -13,6 +13,7 @@ const changeFoodPosition = () => {
     foodY = Math.floor(Math.random() * 40) + 1;
 }
 //Changing snakes position based on velocity from key presses.
+
 const moveSnake = (e) => {
     if(e.key === "ArrowUp"){
         velocityX = 0;
@@ -30,8 +31,8 @@ const moveSnake = (e) => {
     initalizeGame();
 }
 
-
 const initalizeGame = () => {
+    
     let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 // adding the eaten food parts to the snakes body 
     if(snakeX === foodX && snakeY === foodY){
@@ -57,16 +58,20 @@ const initalizeGame = () => {
     }
     
     playBoard.innerHTML = htmlMarkup;
+    
 }
 
 const winCondition = () => {
     if (score !== 25) {
-        
+        youWin = true;
+        alert("You win! Congragulations!")
     }
 }
 
-// Figured out scoreboard, got rid of highscore since it'll be hard.
-// Game over condition? 10 score?
 changeFoodPosition()
 initalizeGame();
 document.addEventListener("keydown", moveSnake);
+// Figured out scoreboard, got rid of highscore since it'll be hard.
+// Game over condition? 25 score.
+// No clue how to get alert to pop up without breaking the code.
+// Also a delay when arrow keys are clicked? tried to find a fix but got stuck.
