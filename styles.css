@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-    background-color: #c51f5d;
+    background-color: #white;
 }
 
 .condition {
@@ -47,7 +47,7 @@ body {
 }
 
 .board .food {
-    background: white
+    background: red
 }
 
 .board .snake {
