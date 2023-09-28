@@ -9,8 +9,8 @@ let score = 0;
 
 //Randomizing the food position using Math.floor from 0 - 30 since there are 30 tiles in each row/column
 const changeFoodPosition = () => {
-    foodX = Math.floor(Math.random() * 30) + 1;
-    foodY = Math.floor(Math.random() * 30) + 1;
+    foodX = Math.floor(Math.random() * 40) + 1;
+    foodY = Math.floor(Math.random() * 40) + 1;
 }
 //Changing snakes position based on velocity from key presses.
 const moveSnake = (e) => {
@@ -57,6 +57,12 @@ const initalizeGame = () => {
     }
     
     playBoard.innerHTML = htmlMarkup;
+}
+
+const winCondition = () => {
+    if (score !== 25) {
+        
+    }
 }
 
 // Figured out scoreboard, got rid of highscore since it'll be hard.
